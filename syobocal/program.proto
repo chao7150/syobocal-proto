@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package syobocal;
+
+import "google/protobuf/timestamp.proto";
+
+message Program {
+  int32 id = 1;
+  Work work = 2;
+  Channel channel = 3;
+  Episode episode = 4;
+  google.protobuf.Timestamp start_time = 5;
+  google.protobuf.Timestamp end_time = 6;
+  int32 start_offset = 7;
+  repeated Flag flag = 8;
+  bool deleted = 9;
+  bool warn = 10;
+  int32 revision = 11;
+  google.protobuf.Timestamp last_update = 12;
+  bool allday = 13;
+}
+
+message Work {
+  int32 id = 1;
+  string title = 2;
+  string short_title = 3;
+  Category category = 4;
+  map<string, string> Urls = 5;
+}
+
+message Episode {
+  int32 count = 1;
+  string title = 2;
+  string comment = 3;
+}
+
+message Channel {
+  int32 id = 1;
+  string name = 2;
+  int32 gid = 3;
+  string url = 4;
+}
+
+enum Flag {
+  ATTENTION = 0;
+  NEW = 1;
+  FINAL = 2;
+  RERUN = 3;
+}
+
+enum Category {
+  OTHERS = 0;
+  ANIME = 1;
+  RADIO = 2;
+  TV = 3;
+  TOKUSATSU = 4;
+  ANIME_RELATED = 5;
+  MEMO = 6;
+  OVA = 7;
+  MOVIE = 8;
+  ANIME_RERUN = 10;
+}

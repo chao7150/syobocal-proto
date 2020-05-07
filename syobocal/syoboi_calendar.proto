@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package syobocal;
+
+import "google/protobuf/timestamp.proto";
+import "program.proto";
+
+service SyoboiCalendar {
+  rpc GetPrograms(SyoboiRequest) returns (SyoboiResponse) {}
+}
+
+message SyoboiRequest {
+  google.protobuf.Timestamp start = 1;
+  google.protobuf.Timestamp end = 2;
+}
+
+message SyoboiResponse { repeated Program program = 1; }
